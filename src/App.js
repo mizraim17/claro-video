@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
 import "materialize-css/dist/css/materialize.css";
 import { Row } from "react-materialize";
 import axios from "axios";
 import Catalog from "./Components/Catalog/Catalog";
+import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
   const [catalogs, setCatalogs] = React.useState();
@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div>
+      <SearchBar />
       <Row>
         {catalogs ? (
           catalogs.map((el, i) => {

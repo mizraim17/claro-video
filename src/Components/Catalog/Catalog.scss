@@ -1,3 +1,15 @@
-.catalog {
-  background-color: aqua;
+.Card {
+  background-color: #0b151b;
+  color: white;
+
+  .txt-tit {
+    font-weight: bold;
+    color: red;
+  }
+
+  .txt-news {
+    padding-top: 30px;
+    font-size: 1.3rem;
+    color: white;
+  }
 }
