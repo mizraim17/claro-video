@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
+import "materialize-css/dist/css/materialize.css";
+import { Row } from "react-materialize";
 import axios from "axios";
+import Catalog from "./Components/Catalog/Catalog";
 
 function App() {
   const [catalogs, setCatalogs] = React.useState();
@@ -17,11 +20,15 @@ function App() {
 
   return (
     <div>
-      {catalogs
-        ? catalogs.map((el, i) => {
-            return <p>{el.title}</p>;
+      <Row>
+        {catalogs ? (
+          catalogs.map((el, i) => {
+            return <Catalog el={el} key={i} />;
           })
-        : null}
+        ) : (
+          <p>nada</p>
+        )}
+      </Row>
     </div>
   );
 }
