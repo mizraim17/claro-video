@@ -1,0 +1,25 @@
+.Film {
+  color: white;
+  background-color: #0b151b;
+  padding: 0;
+  margin: 0;
+
+  &__detail {
+    &--title {
+      font-size: 1.5rem;
+    }
+    &--bold {
+      font-weight: bold;
+    }
+  }
+
+  &__container {
+    background-color: #333333;
+    margin: 0 220px;
+
+    td {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}

@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "materialize-css/dist/css/materialize.css";
-import { Row } from "react-materialize";
+import Router from "./Router";
+import { FilmContext } from "./FilmContext";
 import axios from "axios";
-import Catalog from "./Components/Catalog/Catalog";
-import SearchBar from "./Components/SearchBar/SearchBar";
 
 function App() {
-  const [catalogs, setCatalogs] = React.useState();
+  const [catalogs, setCatalogs] = useState();
 
   React.useEffect(() => {
     const url =
@@ -19,18 +18,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <SearchBar />
-      <Row>
-        {catalogs ? (
-          catalogs.map((el, i) => {
-            return <Catalog el={el} key={i} />;
-          })
-        ) : (
-          <p>nada</p>
-        )}
-      </Row>
-    </div>
+    <FilmContext.Provider value={{ catalogs, setCatalogs }}>
+      <Router></Router>
+    </FilmContext.Provider>
   );
 }
 
