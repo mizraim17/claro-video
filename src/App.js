@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "materialize-css/dist/css/materialize.css";
 import Router from "./Router";
-import { FilmContext } from "./FilmContext";
+import { CatalogContext } from "./CatalogContext";
 import axios from "axios";
 
 function App() {
   const [catalogs, setCatalogs] = useState();
+  const [id, setId] = useState();
+  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
     const url =
@@ -14,13 +16,16 @@ function App() {
     axios.get(url).then(response => {
       console.log(response.data.response.groups);
       setCatalogs(response.data.response.groups);
+      setLoading(false);
     });
   }, []);
 
   return (
-    <FilmContext.Provider value={{ catalogs, setCatalogs }}>
+    <CatalogContext.Provider
+      value={{ catalogs, setCatalogs, id, setId, loading }}
+    >
       <Router></Router>
-    </FilmContext.Provider>
+    </CatalogContext.Provider>
   );
 }
 

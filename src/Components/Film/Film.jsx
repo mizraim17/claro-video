@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Row, Col, Table } from "react-materialize";
 import axios from "axios";
 import "./Film.scss";
-import { bold } from "ansi-colors";
+import { CatalogContext } from "../../CatalogContext";
 
 const Film = props => {
+  const { id, setId } = useContext(CatalogContext);
+
   const [film, setFilm] = useState();
 
   React.useEffect(() => {
-    const url = `https://mfwkweb-api.clarovideo.net/services/content/data?device_id=web&device_category=web&device_model=web&device_type=      web&format=json&device_manufacturer=generic&authpn=webclient&authpt=tfg1h3j4k6fd7&api_version=v5.86&region=mexico&HKS=9s5hqq76r3g6sg4jb90l38us52&user_id=22822863&group_id=${props.location.id}`;
+    const url = `https://mfwkweb-api.clarovideo.net/services/content/data?device_id=web&device_category=web&device_model=web&device_type=web&format=json&device_manufacturer=generic&authpn=webclient&authpt=tfg1h3j4k6fd7&api_version=v5.86&region=mexico&HKS=9s5hqq76r3g6sg4jb90l38us52&user_id=22822863&group_id=${id}`;
 
     axios
       .get(url)
@@ -22,7 +24,7 @@ const Film = props => {
 
   return (
     <div className="Film">
-      <h1>Film........................</h1>
+      <h1>Film........................{id}</h1>
 
       <a href="/">
         <button>back </button>

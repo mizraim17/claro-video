@@ -1,30 +1,34 @@
 import React, { useContext } from "react";
 import "materialize-css/dist/css/materialize.css";
+import { CatalogContext } from "../../CatalogContext";
 import { Row } from "react-materialize";
-import axios from "axios";
-
 import Catalog from "../Catalog/Catalog";
+import Loader from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
-import { FilmContext } from "../../FilmContext";
+import "./Home.scss";
 
 const Home = () => {
-  // const { value, setValue } = useContext(FilmContext);
-  // const [catalogs, setCatalogs] = React.useState();
-  const { catalogs, setCatalogs } = useContext(FilmContext);
+  const { catalogs, loading } = useContext(CatalogContext);
 
   return (
     <>
-      {console.log("-----------", catalogs)}
       <SearchBar />
-      <Row>
-        {catalogs ? (
-          catalogs.map((el, i) => {
-            return <Catalog el={el} key={i} />;
-          })
-        ) : (
-          <p>nada</p>
-        )}
-      </Row>
+
+      {loading ? (
+        <div className="Loader">
+          <Loader type="Oval" color="#00BFFF" height="600" width="600" />
+        </div>
+      ) : (
+        <Row>
+          {catalogs ? (
+            catalogs.map((el, i) => {
+              return <Catalog el={el} key={i} />;
+            })
+          ) : (
+            <p>nada</p>
+          )}
+        </Row>
+      )}
     </>
   );
 };
