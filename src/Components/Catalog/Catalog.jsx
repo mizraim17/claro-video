@@ -9,15 +9,16 @@ const Catalog = ({ el }) => {
   const { id, setId } = useContext(CatalogContext);
 
   return (
-    <>
+    <div className="Catalog">
       <Col s={12} m={6} l={4} xl={3}>
         <Link
+          className="Catalog__link"
           onClick={() => setId(el.id)}
           to={{ pathname: `/film`, id: `${id}` }}
         >
           <Card
             responsive="true"
-            className="medium Card"
+            className="Catalog__card medium"
             header={
               <CardTitle
                 responsive="true"
@@ -30,7 +31,7 @@ const Catalog = ({ el }) => {
           </Card>
         </Link>
       </Col>
-    </>
+    </div>
   );
 };
 

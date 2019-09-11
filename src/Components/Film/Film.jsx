@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Row, Col, Table, NavItem, Navbar, Icon } from "react-materialize";
+import { Link } from "react-router-dom";
+import { Row, Col, Button, NavItem, Navbar, Icon } from "react-materialize";
 import axios from "axios";
 import "./Film.scss";
 import { CatalogContext } from "../../CatalogContext";
@@ -14,11 +15,12 @@ const Film = props => {
     axios
       .get(url)
       .then(response => {
+        console.log(response.data.response.group.common);
         setFilm(response.data.response.group.common);
       })
 
       .catch(err => console.log(err));
-  });
+  }, [id]);
 
   return (
     <div className="Film">
@@ -59,43 +61,30 @@ const Film = props => {
               />
             </Col>
             <Col s={12} m={5} xl={5} className="Film__detail">
-              <Table responsive>
-                <thead>
-                  <tr>
-                    <th className="Film__detail--title">
-                      {film.title}
-                      {` (${film.extendedcommon.media.publishyear})`}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p>
-                        <span className="Film__detail--bold">
-                          Descripción:{" "}
-                        </span>
-                        {film.description}
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p>
-                        <span className="Film__detail--bold">Duración: </span>
-                        {film.duration}
-                      </p>
-
-                      <p>
-                        <span className="Film__detail--bold">
-                          Clasificación:{" "}
-                        </span>
-                        {film.extendedcommon.media.rating.code}
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
+              <p className="Film__detail--title">
+                {film.extendedcommon.media.originaltitle}
+                {` (${film.extendedcommon.media.publishyear})`}
+              </p>
+              <p>
+                <span className="Film__detail--bold">Descripción: </span>
+                {film.description}
+              </p>
+              <p>
+                <span className="Film__detail--bold">Duración: </span>
+                {film.duration}
+              </p>
+              <p>
+                <span className="Film__detail--bold">Clasificación: </span>
+                {film.extendedcommon.media.rating.code}
+              </p>
+              <Link to={"/"} className="Film__link">
+                <Button
+                  waves="light"
+                  className="Film__button light-blue darken-3"
+                >
+                  <Icon>home</Icon>
+                </Button>{" "}
+              </Link>
             </Col>
           </Row>
         </div>

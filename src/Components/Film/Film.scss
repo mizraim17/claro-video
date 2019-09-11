@@ -4,12 +4,21 @@
   padding: 0;
   margin: 0;
 
+  &__link {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  &__button {
+    margin-bottom: 20px;
+  }
+
   &__navbar {
     background-color: #00466a;
   }
   &__detail {
     &--title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
     &--bold {
       font-weight: bold;
@@ -18,13 +27,17 @@
 
   &__container {
     background-color: #333333;
-    margin: 0 220px;
 
-    @media (max-width: 900px) {
-      background-color: red;
-      margin: 0;
+    @media (min-width: 400px) {
+      margin: 0 50px;
+    }
+    @media (min-width: 700px) {
+      margin: 0 100px;
     }
 
+    @media (min-width: 1200px) {
+      margin: 0 250px;
+    }
     td {
       display: flex;
       justify-content: space-around;
