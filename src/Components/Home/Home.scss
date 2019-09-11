@@ -1,4 +1,11 @@
-.Loader {
-  display: flex;
-  justify-content: center;
+.Home {
+  margin: 0 150px;
+
+  @media (max-width: 900px) {
+    margin: 0;
+  }
+  .Loader {
+    display: flex;
+    justify-content: center;
+  }
 }

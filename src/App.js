@@ -8,6 +8,7 @@ function App() {
   const [catalogs, setCatalogs] = useState();
   const [id, setId] = useState();
   const [loading, setLoading] = useState(true);
+  const [cat1, setCat1] = useState();
 
   React.useEffect(() => {
     const url =
@@ -16,13 +17,14 @@ function App() {
     axios.get(url).then(response => {
       console.log(response.data.response.groups);
       setCatalogs(response.data.response.groups);
+      setCat1(response.data.response.groups);
       setLoading(false);
     });
   }, []);
 
   return (
     <CatalogContext.Provider
-      value={{ catalogs, setCatalogs, id, setId, loading }}
+      value={{ catalogs, setCatalogs, id, setId, loading, cat1, setCat1 }}
     >
       <Router></Router>
     </CatalogContext.Provider>

@@ -1,18 +1,36 @@
 import React, { useContext } from "react";
+import "./Home.scss";
 import "materialize-css/dist/css/materialize.css";
 import { CatalogContext } from "../../CatalogContext";
 import { Row } from "react-materialize";
 import Catalog from "../Catalog/Catalog";
 import Loader from "react-loader-spinner";
 import SearchBar from "../SearchBar/SearchBar";
-import "./Home.scss";
 
 const Home = () => {
-  const { catalogs, loading } = useContext(CatalogContext);
+  const { catalogs, loading, setLoading, cat1, setCat1 } = useContext(
+    CatalogContext
+  );
+
+  let word = "";
+
+  const closeSearchbar = () => {
+    document.getElementById("search").value = "";
+    setCat1(catalogs);
+  };
+
+  const onChange = e => {
+    e.preventDefault();
+    word = e.target.value;
+
+    setCat1(
+      catalogs.filter(el => el.title.toLowerCase().includes(word.toLowerCase()))
+    );
+  };
 
   return (
-    <>
-      <SearchBar />
+    <div className="Home">
+      <SearchBar {...{ setLoading, onChange, closeSearchbar }} />
 
       {loading ? (
         <div className="Loader">
@@ -21,7 +39,7 @@ const Home = () => {
       ) : (
         <Row>
           {catalogs ? (
-            catalogs.map((el, i) => {
+            cat1.map((el, i) => {
               return <Catalog el={el} key={i} />;
             })
           ) : (
@@ -29,7 +47,7 @@ const Home = () => {
           )}
         </Row>
       )}
-    </>
+    </div>
   );
 };
 

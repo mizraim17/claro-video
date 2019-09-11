@@ -1,4 +1,7 @@
 .Searchbar {
-  background-color: violet;
-  text-align: center;
+  background-color: #00466a;
+  &__search {
+    color: white;
+    text-align: center;
+  }
 }

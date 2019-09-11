@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Row, Col, Table } from "react-materialize";
+import { Row, Col, Table, NavItem, Navbar, Icon } from "react-materialize";
 import axios from "axios";
 import "./Film.scss";
 import { CatalogContext } from "../../CatalogContext";
 
 const Film = props => {
-  const { id, setId } = useContext(CatalogContext);
-
+  const { id } = useContext(CatalogContext);
   const [film, setFilm] = useState();
 
   React.useEffect(() => {
@@ -15,28 +14,52 @@ const Film = props => {
     axios
       .get(url)
       .then(response => {
-        console.log("===", response.data.response.group.common);
         setFilm(response.data.response.group.common);
       })
 
       .catch(err => console.log(err));
-  }, []);
+  });
 
   return (
     <div className="Film">
-      <h1>Film........................{id}</h1>
+      <div>
+        <Navbar
+          className="Film__navbar"
+          brand={
+            <a href="/">
+              <img
+                src="../../../images/claro_video_logo.png"
+                width="100"
+                alt=""
+              />
+            </a>
+          }
+          alignLinks="right"
+        >
+          <NavItem href="get-started.html">
+            Link with left icon
+            <Icon left>search</Icon>
+          </NavItem>
+          <NavItem href="get-started.html">
+            Link with right icon
+            <Icon right>view_module</Icon>
+          </NavItem>
+        </Navbar>
+      </div>
 
-      <a href="/">
-        <button>back </button>
-      </a>
       {film ? (
         <div className="Film__container  ">
           <Row>
-            <Col m={7} l={7} className=" ">
-              <img src={film.image_base_square} height="600" alt="" />
+            <Col s={12} m={7} xl={7} className=" ">
+              <img
+                src={film.image_base_square}
+                className="responsive-img"
+                height="600"
+                alt=""
+              />
             </Col>
-            <Col m={5} l={5} className="Film__detail">
-              <Table>
+            <Col s={12} m={5} xl={5} className="Film__detail">
+              <Table responsive>
                 <thead>
                   <tr>
                     <th className="Film__detail--title">

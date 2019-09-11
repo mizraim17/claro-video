@@ -10,12 +10,13 @@ const Catalog = ({ el }) => {
 
   return (
     <>
-      <Link
-        onClick={() => setId(el.id)}
-        to={{ pathname: `/film`, id: `${el.id}` }}
-      >
-        <Col s={12} m={4} l={3}>
+      <Col s={12} m={6} l={4} xl={3}>
+        <Link
+          onClick={() => setId(el.id)}
+          to={{ pathname: `/film`, id: `${id}` }}
+        >
           <Card
+            responsive="true"
             className="medium Card"
             header={
               <CardTitle
@@ -25,10 +26,10 @@ const Catalog = ({ el }) => {
               ></CardTitle>
             }
           >
-            <p className="txt-news">{el.description}</p>
+            <p className="description">{el.description}</p>
           </Card>
-        </Col>
-      </Link>
+        </Link>
+      </Col>
     </>
   );
 };
