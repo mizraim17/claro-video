@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { Row, Col, Button, NavItem, Navbar, Icon } from "react-materialize";
-import axios from "axios";
 import "./Film.scss";
 import { CatalogContext } from "../../CatalogContext";
+import { Link } from "react-router-dom";
+import { Row, Col, Button, Navbar, Icon, Chip } from "react-materialize";
+import axios from "axios";
+import Loader from "react-loader-spinner";
 
 const Film = props => {
   const { id } = useContext(CatalogContext);
   const [film, setFilm] = useState();
+  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
     const url = `https://mfwkweb-api.clarovideo.net/services/content/data?device_id=web&device_category=web&device_model=web&device_type=web&format=json&device_manufacturer=generic&authpn=webclient&authpt=tfg1h3j4k6fd7&api_version=v5.86&region=mexico&HKS=9s5hqq76r3g6sg4jb90l38us52&user_id=22822863&group_id=${id}`;
@@ -17,6 +19,7 @@ const Film = props => {
       .then(response => {
         console.log(response.data.response.group.common);
         setFilm(response.data.response.group.common);
+        setLoading(false);
       })
 
       .catch(err => console.log(err));
@@ -37,19 +40,14 @@ const Film = props => {
             </a>
           }
           alignLinks="right"
-        >
-          <NavItem href="get-started.html">
-            Link with left icon
-            <Icon left>search</Icon>
-          </NavItem>
-          <NavItem href="get-started.html">
-            Link with right icon
-            <Icon right>view_module</Icon>
-          </NavItem>
-        </Navbar>
+        ></Navbar>
       </div>
 
-      {film ? (
+      {loading ? (
+        <div className="Loader">
+          <Loader type="Oval" color="#00BFFF" height="600" width="600" />
+        </div>
+      ) : film ? (
         <div className="Film__container  ">
           <Row>
             <Col s={12} m={7} xl={7} className=" ">
@@ -77,13 +75,24 @@ const Film = props => {
                 <span className="Film__detail--bold">Clasificación: </span>
                 {film.extendedcommon.media.rating.code}
               </p>
+              <div className="Film__chips">
+                {film.extendedcommon.genres.genre ? (
+                  film.extendedcommon.genres.genre.map((el, i) => (
+                    <Chip className="Film__chip" key={el.id}>
+                      {el.desc}
+                    </Chip>
+                  ))
+                ) : (
+                  <p>Sin género</p>
+                )}
+              </div>
               <Link to={"/"} className="Film__link">
                 <Button
                   waves="light"
                   className="Film__button light-blue darken-3"
                 >
                   <Icon>home</Icon>
-                </Button>{" "}
+                </Button>
               </Link>
             </Col>
           </Row>
