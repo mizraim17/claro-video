@@ -13,7 +13,10 @@ const Catalog = ({ el }) => {
         <Link
           className="Catalog__link"
           onClick={() => setId(el.id)}
-          to={{ pathname: `/film`, id: `${id}` }}
+          to={{
+            pathname: `/film`,
+            id: `${id}`
+          }}
         >
           <Card
             responsive="true"

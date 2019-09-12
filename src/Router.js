@@ -6,8 +6,8 @@ import Film from "./Components/Film/Film";
 
 const Router = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/film" component={Film} />
+    <Route path="/" component={Home} />
+    <Route path="claro-video/film" component={Film} />
   </Switch>
 );
 
