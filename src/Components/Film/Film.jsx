@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
+import "./Film.scss";
+import { CatalogContext } from "../../CatalogContext";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, NavItem, Navbar, Icon } from "react-materialize";
 import axios from "axios";
-import "./Film.scss";
-import { CatalogContext } from "../../CatalogContext";
 
 const Film = props => {
   const { id } = useContext(CatalogContext);
@@ -15,7 +15,6 @@ const Film = props => {
     axios
       .get(url)
       .then(response => {
-        console.log(response.data.response.group.common);
         setFilm(response.data.response.group.common);
       })
 

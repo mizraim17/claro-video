@@ -1,13 +1,12 @@
 .Film {
-  color: white;
   background-color: #0b151b;
-  padding: 0;
+  color: white;
   margin: 0;
+  padding: 0;
 
   &__link {
     display: flex;
     justify-content: center;
-    cursor: pointer;
   }
   &__button {
     margin-bottom: 20px;

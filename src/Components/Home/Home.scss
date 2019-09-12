@@ -1,11 +1,14 @@
 .Home {
-  margin: 0 150px;
-
-  @media (max-width: 900px) {
-    margin: 0;
+  &__loading {
+    background-color: red;
+    color: green !important;
+  }
+  @media (min-width: 993px) {
+    margin: 0 150px;
   }
   .Loader {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
   }
 }
