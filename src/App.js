@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "materialize-css/dist/css/materialize.css";
-import Router from "./Router";
 import { CatalogContext } from "./CatalogContext";
+import Router from "./Router";
 
 function App() {
   const [id, setId] = useState();

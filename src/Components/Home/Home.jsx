@@ -46,7 +46,7 @@ const Home = () => {
 
       {loading ? (
         <div className="Loader">
-          <Loader type="Oval" color="#00BFFF" height="600" width="600" />
+          <Loader type="Oval" color="#00BFFF" height="400" width="400" />
         </div>
       ) : (
         <Row>

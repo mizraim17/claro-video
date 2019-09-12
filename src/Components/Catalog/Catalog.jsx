@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-
 import "./Catalog.scss";
 import { Card, CardTitle, Col } from "react-materialize";
-import { Link } from "react-router-dom";
 import { CatalogContext } from "../../CatalogContext";
+import { Link } from "react-router-dom";
 
 const Catalog = ({ el }) => {
   const { id, setId } = useContext(CatalogContext);
@@ -27,7 +26,7 @@ const Catalog = ({ el }) => {
               ></CardTitle>
             }
           >
-            <p className="description">{el.description}</p>
+            <p className="Catalog__description">{el.description}</p>
           </Card>
         </Link>
       </Col>

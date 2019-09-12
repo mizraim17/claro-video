@@ -3,16 +3,11 @@
     background-color: white;
     color: #08212f;
     margin-top: 20px;
-
-    &__link {
-      cursor: pointer;
-    }
-
-    .description {
-      text-align: justify;
-      padding-top: 30px;
-      font-size: 1.2rem;
-      color: #08212f;
-    }
+  }
+  &__description {
+    color: #08212f;
+    font-size: 1.2rem;
+    padding-top: 30px;
+    text-align: justify;
   }
 }

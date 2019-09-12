@@ -17,7 +17,6 @@ const Film = props => {
     axios
       .get(url)
       .then(response => {
-        console.log(response.data.response.group.common);
         setFilm(response.data.response.group.common);
         setLoading(false);
       })
