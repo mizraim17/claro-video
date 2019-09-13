@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "materialize-css/dist/css/materialize.css";
 import { CatalogContext } from "./CatalogContext";
 import Router from "./Router";
@@ -8,6 +8,10 @@ function App() {
   const [id, setId] = useState();
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState();
+
+  useEffect(() => {
+    M.AutoInit();
+  }, []);
 
   return (
     <CatalogContext.Provider

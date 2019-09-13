@@ -2,7 +2,15 @@ import React, { useState, useContext } from "react";
 import "./Film.scss";
 import { CatalogContext } from "../../CatalogContext";
 import { Link } from "react-router-dom";
-import { Row, Col, Button, Navbar, Icon, Chip } from "react-materialize";
+import {
+  Row,
+  Col,
+  Button,
+  Navbar,
+  Icon,
+  Chip,
+  NavItem
+} from "react-materialize";
 import axios from "axios";
 
 const Film = props => {
@@ -25,9 +33,8 @@ const Film = props => {
   return (
     <div className="Film">
       <div>
-        <Navbar
-          className="Film__navbar"
-          brand={
+        <Navbar className="Film__navbar">
+          <NavItem className="  pt-2">
             <a href="/">
               <img
                 src="../../../images/claro_video_logo.png"
@@ -35,9 +42,8 @@ const Film = props => {
                 alt=""
               />
             </a>
-          }
-          alignLinks="right"
-        ></Navbar>
+          </NavItem>
+        </Navbar>
       </div>
 
       {film ? (
