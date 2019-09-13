@@ -36,7 +36,13 @@ const Home = () => {
     word = e.target.value;
 
     setFilter(
-      catalogs.filter(el => el.title.toLowerCase().includes(word.toLowerCase()))
+      catalogs.filter(el =>
+        el.title
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(word.toLowerCase())
+      )
     );
   };
 
