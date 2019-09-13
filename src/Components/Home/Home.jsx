@@ -43,7 +43,6 @@ const Home = () => {
   return (
     <div className="Home">
       <SearchBar {...{ setLoading, onChange, closeSearchbar }} />
-
       {loading ? (
         <div className="Loader">
           <Loader type="Oval" color="#00BFFF" height="400" width="400" />

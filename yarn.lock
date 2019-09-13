@@ -8374,10 +8374,10 @@ react-loader-spinner@^2.3.0:
     babel-runtime "^6.26.0"
     prop-types "^15.6.2"
 
-react-materialize@^3.3.5:
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-3.3.5.tgz#009d22ceee618a0b98946b89e8b3ac9b77730773"
-  integrity sha512-86NWrITDs8siIgz+dmg5AG6InILyNyUZGwbkt4nUvjbY67HhzQndQ3sU7bzXjBMrNjCgqLzqEJRspFBY2VyWHA==
+react-materialize@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-3.4.1.tgz#c8e5a2dc847d7d6b116db777bdf5299ab32898e2"
+  integrity sha512-1UEmFBE+l2eFarROWYJcHUK4yu/x1yEHTtMzUL0PcZKalDh4HfB+/0oTLKujZLw9ANt67bYk73hjiJgrn9oQ0Q==
   dependencies:
     classnames "^2.2.5"
     react "^16.8.5"

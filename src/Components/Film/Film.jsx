@@ -74,17 +74,27 @@ const Film = props => {
                 <span className="Film__detail--bold">Clasificación: </span>
                 {film.extendedcommon.media.rating.code}
               </p>
+<<<<<<< HEAD
               <div className="Film__chips">
                 {film.extendedcommon.genres.genre ? (
                   film.extendedcommon.genres.genre.map((el, i) => (
+=======
+
+              {film
+                ? film.extendedcommon.genres.genre.map((el, i) => (
+>>>>>>> dev
                     <Chip className="Film__chip" key={el.id}>
                       {el.desc}
                     </Chip>
                   ))
+<<<<<<< HEAD
                 ) : (
                   <p>Sin género</p>
                 )}
               </div>
+=======
+                : ""}
+>>>>>>> dev
               <Link to={"/"} className="Film__link">
                 <Button
                   waves="light"
