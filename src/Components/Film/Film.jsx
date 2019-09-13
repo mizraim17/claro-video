@@ -4,12 +4,10 @@ import { CatalogContext } from "../../CatalogContext";
 import { Link } from "react-router-dom";
 import { Row, Col, Button, Navbar, Icon, Chip } from "react-materialize";
 import axios from "axios";
-import Loader from "react-loader-spinner";
 
 const Film = props => {
   const { id } = useContext(CatalogContext);
   const [film, setFilm] = useState();
-  const [loading, setLoading] = useState(true);
 
   React.useEffect(() => {
     const url = `https://mfwkweb-api.clarovideo.net/services/content/data?device_id=web&device_category=web&device_model=web&device_type=web&format=json&device_manufacturer=generic&authpn=webclient&authpt=tfg1h3j4k6fd7&api_version=v5.86&region=mexico&HKS=9s5hqq76r3g6sg4jb90l38us52&user_id=22822863&group_id=${id}`;
@@ -18,7 +16,7 @@ const Film = props => {
       .get(url)
       .then(response => {
         setFilm(response.data.response.group.common);
-        setLoading(false);
+        console.log("--->", response.data.response.group.common);
       })
 
       .catch(err => console.log(err));
@@ -42,11 +40,7 @@ const Film = props => {
         ></Navbar>
       </div>
 
-      {loading ? (
-        <div className="Loader">
-          <Loader type="Oval" color="#00BFFF" height="600" width="600" />
-        </div>
-      ) : film ? (
+      {film ? (
         <div className="Film__container  ">
           <Row>
             <Col s={12} m={7} xl={7} className=" ">
@@ -74,34 +68,21 @@ const Film = props => {
                 <span className="Film__detail--bold">Clasificación: </span>
                 {film.extendedcommon.media.rating.code}
               </p>
-<<<<<<< HEAD
-              <div className="Film__chips">
-                {film.extendedcommon.genres.genre ? (
-                  film.extendedcommon.genres.genre.map((el, i) => (
-=======
 
               {film
                 ? film.extendedcommon.genres.genre.map((el, i) => (
->>>>>>> dev
                     <Chip className="Film__chip" key={el.id}>
                       {el.desc}
                     </Chip>
                   ))
-<<<<<<< HEAD
-                ) : (
-                  <p>Sin género</p>
-                )}
-              </div>
-=======
                 : ""}
->>>>>>> dev
               <Link to={"/"} className="Film__link">
                 <Button
                   waves="light"
                   className="Film__button light-blue darken-3"
                 >
                   <Icon>home</Icon>
-                </Button>
+                </Button>{" "}
               </Link>
             </Col>
           </Row>
