@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import "./Film.scss";
 import { CatalogContext } from "../../CatalogContext";
 import { Link } from "react-router-dom";
-import { Row, Col, Button, NavItem, Navbar, Icon } from "react-materialize";
+import { Row, Col, Button, Navbar, Icon, Chip } from "react-materialize";
 import axios from "axios";
 
 const Film = props => {
@@ -16,6 +16,7 @@ const Film = props => {
       .get(url)
       .then(response => {
         setFilm(response.data.response.group.common);
+        console.log("--->", response.data.response.group.common);
       })
 
       .catch(err => console.log(err));
@@ -36,16 +37,7 @@ const Film = props => {
             </a>
           }
           alignLinks="right"
-        >
-          <NavItem href="get-started.html">
-            Link with left icon
-            <Icon left>search</Icon>
-          </NavItem>
-          <NavItem href="get-started.html">
-            Link with right icon
-            <Icon right>view_module</Icon>
-          </NavItem>
-        </Navbar>
+        ></Navbar>
       </div>
 
       {film ? (
@@ -76,6 +68,14 @@ const Film = props => {
                 <span className="Film__detail--bold">Clasificación: </span>
                 {film.extendedcommon.media.rating.code}
               </p>
+
+              {film
+                ? film.extendedcommon.genres.genre.map((el, i) => (
+                    <Chip className="Film__chip" key={el.id}>
+                      {el.desc}
+                    </Chip>
+                  ))
+                : ""}
               <Link to={"/"} className="Film__link">
                 <Button
                   waves="light"

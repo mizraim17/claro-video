@@ -24,14 +24,19 @@ const Home = () => {
     word = e.target.value;
 
     setCat1(
-      catalogs.filter(el => el.title.toLowerCase().includes(word.toLowerCase()))
+      catalogs.filter(el =>
+        el.title
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(word.toLowerCase())
+      )
     );
   };
 
   return (
     <div className="Home">
       <SearchBar {...{ setLoading, onChange, closeSearchbar }} />
-
       {loading ? (
         <div className="Loader">
           <Loader type="Oval" color="#00BFFF" height="400" width="400" />
