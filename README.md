@@ -1,7 +1,7 @@
  
 
 ##  Claro Video
-This project request the catalogs of film of api claro-video and show a list of action movies,if you click on any movie it sends you to the details of it; this site is totally responsive.
+This project request the catalogs of film of api claro-video and show a list of action movies, you can search by name ,  if you click on any movie it sends you to the details of it; this site is totally responsive, created with the last version of React, hooks, sass and context instead of redux.
 
 ## Hosting 
 https://claro-video.herokuapp.com/
